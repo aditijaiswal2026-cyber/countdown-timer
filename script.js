@@ -1,88 +1,79 @@
-let timer;
-let targetTime;
-let remainingTime = 0;
-
-function startTimer() {
-
-    let input = document.getElementById("dateInput").value;
-
-    if (input == "") {
-        alert("Please select date and time!");
-        return;
-    }
-
-    targetTime = new Date(input).getTime();
-
-    clearInterval(timer);
-
-    timer = setInterval(function() {
-
-        let currentTime = new Date().getTime();
-
-        remainingTime = targetTime - currentTime;
-
-        if (remainingTime <= 0) {
-
-            clearInterval(timer);
-
-            document.getElementById("days").innerHTML = "00";
-            document.getElementById("hours").innerHTML = "00";
-            document.getElementById("minutes").innerHTML = "00";
-            document.getElementById("seconds").innerHTML = "00";
-
-            document.getElementById("message").innerHTML =
-                "🎉 Time's Up!";
-
-            return;
-        }
-
-        let days = Math.floor(
-            remainingTime / (1000 * 60 * 60 * 24)
-        );
-
-        let hours = Math.floor(
-            (remainingTime / (1000 * 60 * 60)) % 24
-        );
-
-        let minutes = Math.floor(
-            (remainingTime / (1000 * 60)) % 60
-        );
-
-        let seconds = Math.floor(
-            (remainingTime / 1000) % 60
-        );
-
-        document.getElementById("days").innerHTML =
-            String(days).padStart(2, "0");
-
-        document.getElementById("hours").innerHTML =
-            String(hours).padStart(2, "0");
-
-        document.getElementById("minutes").innerHTML =
-            String(minutes).padStart(2, "0");
-
-        document.getElementById("seconds").innerHTML =
-            String(seconds).padStart(2, "0");
-
-    }, 1000);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-
-function pauseTimer() {
-    clearInterval(timer);
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.container {
+    background: white;
+    width: 500px;
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
-function resetTimer() {
+h1 {
+    margin-bottom: 20px;
+}
 
-    clearInterval(timer);
+p {
+    margin-bottom: 10px;
+}
 
-    document.getElementById("dateInput").value = "";
+input {
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
 
-    document.getElementById("days").innerHTML = "00";
-    document.getElementById("hours").innerHTML = "00";
-    document.getElementById("minutes").innerHTML = "00";
-    document.getElementById("seconds").innerHTML = "00";
+.timer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
 
-    document.getElementById("message").innerHTML = "";
+.timer div {
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 80px;
+}
+
+.timer span {
+    display: block;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.timer small {
+    font-size: 13px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#message {
+    margin-top: 20px;
 }
