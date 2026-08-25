@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>⏳ Countdown Timer</h1>
+
+        <p>Select Date and Time</p>
+
+        <input type="datetime-local" id="dateInput">
+
+        <div class="timer">
+            <div>
+                <span id="days">00</span>
+                <small>Days</small>
+            </div>
+
+            <div>
+                <span id="hours">00</span>
+                <small>Hours</small>
+            </div>
+
+            <div>
+                <span id="minutes">00</span>
+                <small>Minutes</small>
+            </div>
+
+            <div>
+                <span id="seconds">00</span>
+                <small>Seconds</small>
+            </div>
+        </div>
+
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+
+        <h2 id="message"></h2>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
